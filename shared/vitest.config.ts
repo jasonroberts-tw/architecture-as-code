@@ -1,4 +1,5 @@
 import {defineConfig} from 'vitest/config';
+import {fileURLToPath} from 'node:url';
 
 import {CoverageV8Options} from 'vitest/node';
 
@@ -16,6 +17,11 @@ const v8CoverageSettings: CoverageV8Options = {
 };
 
 export default defineConfig({
+    resolve: {
+        alias: {
+            '@panzoom/panzoom': fileURLToPath(new URL('./test_fixtures/docify/panzoom-stub.js', import.meta.url)),
+        },
+    },
     test: {
         globals: true,
         environment: 'node',

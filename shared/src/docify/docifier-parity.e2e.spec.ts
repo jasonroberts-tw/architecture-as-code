@@ -117,7 +117,8 @@ describe('Docifier Parity E2E - Option A vs Option B', () => {
             'docusaurus.config.js',
             'package.json',
             'static/img/2025_CALM_Icon.svg',
-            'static/css/custom.css'
+            'static/css/custom.css',
+            'src/mermaid-zoom.js'
         ];
 
         for (const file of expectedFiles) {

@@ -72,6 +72,12 @@
       "from": "document",
       "output": "static/css/custom.css",
       "output-type": "copy"
+    },
+    {
+      "template": "mermaid-zoom.js",
+      "from": "document",
+      "output": "src/mermaid-zoom.js",
+      "output-type": "copy"
     }
   ]
 }

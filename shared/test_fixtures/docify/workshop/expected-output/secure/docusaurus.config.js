@@ -28,6 +28,9 @@ module.exports = {
             onBrokenMarkdownLinks: 'warn'
         }
     },
+    clientModules: [
+        require.resolve('./src/mermaid-zoom.js')
+    ],
     stylesheets: [
         '/css/custom.css'
     ],

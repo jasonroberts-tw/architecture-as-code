@@ -25,6 +25,8 @@ calm docify -a architecture.json -o docs/output
 
 This uses the default website template bundle and produces a fully structured Markdown documentation site in `docs/output`.
 
+In the generated site, each diagram has zoom in, zoom out and reset buttons. You can also hold Ctrl (Cmd on macOS) and scroll, or pinch on a trackpad, to zoom. Drag to pan, and double-click to reset.
+
 ### Generate a custom Markdown report
 
 To produce a tailored document — such as a compliance report or runbook — supply your own template:

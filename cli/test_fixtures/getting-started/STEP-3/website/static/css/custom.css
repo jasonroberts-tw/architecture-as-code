@@ -45,3 +45,34 @@
 .text-left {
     text-align: left;
 }
+
+/* Mermaid pan/zoom (src/mermaid-zoom.js) */
+.docusaurus-mermaid-container {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: var(--ifm-global-radius);
+}
+
+/* An inline SVG leaves a gap below it, which pan/zoom would fill by scaling the diagram up */
+.docusaurus-mermaid-container > svg {
+    display: block;
+}
+
+.mermaid-zoom-toolbar {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+}
+
+.mermaid-zoom-toolbar button {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    color: var(--ifm-font-color-base);
+    background: var(--ifm-background-surface-color);
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: var(--ifm-global-radius);
+}
