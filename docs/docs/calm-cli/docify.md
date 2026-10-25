@@ -91,3 +91,5 @@ This requires Google Chrome or Microsoft Edge to be installed locally (detected
 automatically), or a Chromium-based browser path supplied via `--browser-path`. If
 no browser is found, documentation is still generated with diagrams left as
 Mermaid code blocks.
+
+Each image links to its full-size file. Readers can open the file in a browser and zoom it.

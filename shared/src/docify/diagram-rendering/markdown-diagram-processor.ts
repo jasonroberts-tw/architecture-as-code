@@ -29,9 +29,11 @@ type FileDiagramSummary = Omit<DiagramProcessingSummary, 'filesScanned'>;
 /**
  * Renders every ```mermaid``` code block in a single markdown file via
  * renderer, and rewrites the file in place: rendered diagrams become a
- * centered `<p align="center"><img src="_diagrams/<basename>-<n>.<ext>"
- * alt="Diagram <n>" /></p>` reference, with the image written to a sibling
- * `_diagrams/` directory; failed diagrams are left as mermaid code blocks.
+ * centered image reference, linked to the full-size file so that readers can
+ * open and zoom it (`<p align="center"><a href="_diagrams/<basename>-<n>.<ext>">
+ * <img src="_diagrams/<basename>-<n>.<ext>" alt="Diagram <n>" /></a></p>`),
+ * with the image written to a sibling `_diagrams/` directory; failed diagrams
+ * are left as mermaid code blocks.
  * Files with no mermaid blocks are left untouched. `fileLabel` is used in
  * warnings/failure entries.
  */
@@ -71,7 +73,8 @@ async function processFile(
             const fileName = `${baseName}-${diagramIndex}.${extension}`;
             await mkdirp(diagramsDir);
             await writeFile(path.join(diagramsDir, fileName), data);
-            result += `<p align="center">\n  <img src="_diagrams/${fileName}" alt="Diagram ${diagramIndex}" />\n</p>`;
+            const src = `_diagrams/${fileName}`;
+            result += `<p align="center">\n  <a href="${src}"><img src="${src}" alt="Diagram ${diagramIndex}" /></a>\n</p>`;
             summary.diagramsRendered++;
         } catch (err) {
             result += match[0];

@@ -50,7 +50,7 @@ maybeDescribe('Docifier E2E - --export-diagrams (local browser)', () => {
 
         const indexMd = readFileSync(join(OUTPUT_DIR, 'docs/index.md'), 'utf8');
         expect(indexMd).not.toContain('```mermaid');
-        expect(indexMd).toContain('<p align="center">\n  <img src="_diagrams/index-1.svg" alt="Diagram 1" />\n</p>');
+        expect(indexMd).toContain('<p align="center">\n  <a href="_diagrams/index-1.svg"><img src="_diagrams/index-1.svg" alt="Diagram 1" /></a>\n</p>');
 
         const svg = readFileSync(join(OUTPUT_DIR, 'docs/_diagrams/index-1.svg'), 'utf8');
         expect(svg).toContain('<svg');
@@ -74,7 +74,7 @@ maybeDescribe('Docifier E2E - --export-diagrams (local browser)', () => {
 
         const indexMd = readFileSync(join(OUTPUT_DIR, 'docs/index.md'), 'utf8');
         expect(indexMd).not.toContain('```mermaid');
-        expect(indexMd).toContain('<p align="center">\n  <img src="_diagrams/index-1.png" alt="Diagram 1" />\n</p>');
+        expect(indexMd).toContain('<p align="center">\n  <a href="_diagrams/index-1.png"><img src="_diagrams/index-1.png" alt="Diagram 1" /></a>\n</p>');
 
         const png = readFileSync(join(OUTPUT_DIR, 'docs/_diagrams/index-1.png'));
         expect(png.subarray(0, PNG_SIGNATURE.length)).toEqual(PNG_SIGNATURE);
