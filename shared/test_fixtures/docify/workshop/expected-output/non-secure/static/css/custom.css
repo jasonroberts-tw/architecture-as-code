@@ -59,6 +59,21 @@
     display: block;
 }
 
+/* Without a background, the browser's black full screen backdrop hides the diagram's lines.
+   --ifm-background-color is transparent in light mode, so use the surface colour. */
+.docusaurus-mermaid-container:fullscreen {
+    background: var(--ifm-background-surface-color);
+    border: none;
+    border-radius: 0;
+}
+
+/* Mermaid caps the SVG at its natural width with an inline style, so fill the screen with !important */
+.docusaurus-mermaid-container:fullscreen > svg {
+    width: 100%;
+    height: 100%;
+    max-width: none !important;
+}
+
 .mermaid-zoom-toolbar {
     position: absolute;
     top: 8px;

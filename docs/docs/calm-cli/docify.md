@@ -25,7 +25,7 @@ calm docify -a architecture.json -o docs/output
 
 This uses the default website template bundle and produces a fully structured Markdown documentation site in `docs/output`.
 
-In the generated site, each diagram has zoom in, zoom out and reset buttons. You can also hold Ctrl (Cmd on macOS) and scroll, or pinch on a trackpad, to zoom. Drag to pan, and double-click to reset.
+In the generated site, each diagram has zoom in, zoom out and reset buttons. You can also hold Ctrl (Cmd on macOS) and scroll, or pinch on a trackpad, to zoom. Drag to pan, and double-click to reset. The full screen button (⤢) opens a diagram across the whole screen, and Esc closes it. Browsers that cannot show a page element full screen, such as Safari on iPhone, do not show this button.
 
 ### Generate a custom Markdown report
 

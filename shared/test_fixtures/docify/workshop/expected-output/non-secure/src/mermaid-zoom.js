@@ -27,6 +27,7 @@ function enableZoom(svg) {
     }, { passive: false });
     svg.addEventListener('dblclick', () => panzoom.reset());
 
+    const container = svg.parentElement;
     const toolbar = document.createElement('div');
     toolbar.className = 'mermaid-zoom-toolbar';
     toolbar.append(
@@ -34,7 +35,27 @@ function enableZoom(svg) {
         button('−', 'Zoom out', () => panzoom.zoomOut()),
         button('⟲', 'Reset zoom', () => panzoom.reset()),
     );
-    svg.parentElement.append(toolbar);
+    // iPhone Safari cannot show an element full screen, so it gets no button.
+    if (document.fullscreenEnabled) {
+        toolbar.append(fullScreenButton(container, svg, panzoom));
+    }
+    container.append(toolbar);
+}
+
+function fullScreenButton(container, svg, panzoom) {
+    const toggle = button('⤢', 'Full screen', () => {
+        if (document.fullscreenElement === container) document.exitFullscreen();
+        else container.requestFullscreen();
+    });
+    container.addEventListener('fullscreenchange', () => {
+        const label = document.fullscreenElement === container ? 'Exit full screen' : 'Full screen';
+        toggle.title = label;
+        toggle.setAttribute('aria-label', label);
+        // The diagram's box changed size, so start again from the fitted view.
+        panzoom.setOptions({ maxScale: maxScale(svg) });
+        panzoom.reset();
+    });
+    return toggle;
 }
 
 // Lets readers reach twice the natural size, however far the column shrank the diagram.
